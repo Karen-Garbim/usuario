@@ -133,7 +133,9 @@ body {
 label {
   text-align: justify;
 }
-
+a {
+  color: #000;
+}
 a:hover {
   color: #fff;
 }
@@ -144,4 +146,22 @@ a:hover {
 }
 .botao2 {
   display: inline-block;
+}
+
+.menu {
+  background-color: rgba(142, 39, 239, 0.548);
+  color: #000;
+  margin-right: 25px;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+  height: 62px;
+}
+.lado1 {
+  margin: 18px;
+  font-size: 16px;
+}
+.lado2 {
+  margin: 15px;
+  font-size: 16px;
 }

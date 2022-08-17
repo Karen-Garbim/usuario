@@ -32,14 +32,14 @@ def index():
 
 @app.route("/cadastro/usuario")
 def usuario():
-    return render_template("usuario.html", usuarios = Usuario.query.all(), titulo="Cadastro de Usuário")
+    return render_template("usuario.html")
 
 @app.route("/usuario/novo", methods=["POST"])
 def novousuario():
     usuario = Usuario(request.form.get("nome"), request.form.get("email"), request.form.get("senha"), request.form.get("endereco"))
     db.session.add(usuario)
     db.session.commit()
-    return redirect(url_for('usuario'))
+    return redirect(url_for('relUsuario'))
 
 @app.route("/usuario/detalhes/<int:id>")
 def buscausuario(id):
@@ -56,7 +56,7 @@ def editarusuario(id):
         usuario.endereco = request.form.get('endereco')
         db.session.add(usuario)
         db.session.commit()
-        return redirect(url_for('usuario'))
+        return redirect(url_for('relUsuario'))
     return render_template("editusuario.html", usuario = usuario, titulo=" Usuário")
 
 @app.route("/usuario/deletar/<int:id>")
@@ -68,7 +68,7 @@ def deletarusuario(id):
 
 @app.route("/relatorio/usuarios")
 def relUsuario():
-    return render_template("relusuario.html", usuarios = Usuario.query.all(), titulo="Cadastro de Usuário")
+    return render_template("relusuario.html", usuarios = Usuario.query.all(), titulo="Usuários")
 
 if __name__ == 'app':
     app.run(debug=True)
