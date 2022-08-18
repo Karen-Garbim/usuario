@@ -6,10 +6,9 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root@localhost:3306/usuario"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-#INSTANCIAR OBJETO
+
 db = SQLAlchemy(app)
 
-#PARA CADA TABELA DO BANCO CRIAR UMA CLASSE
 
 class Usuario(db.Model):
     id = db.Column("usuario_id", db.Integer, primary_key=True)
