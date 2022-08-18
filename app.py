@@ -6,10 +6,9 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root@localhost:3306/usuario"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-#INSTANCIAR OBJETO
+
 db = SQLAlchemy(app)
 
-#PARA CADA TABELA DO BANCO CRIAR UMA CLASSE
 
 class Usuario(db.Model):
     id = db.Column("usuario_id", db.Integer, primary_key=True)
@@ -25,14 +24,13 @@ class Usuario(db.Model):
         self.endereco = endereco
 
 
-
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", titulo='Usuário')
 
 @app.route("/cadastro/usuario")
 def usuario():
-    return render_template("usuario.html")
+    return render_template("usuario.html", titulo='Usuário')
 
 @app.route("/usuario/novo", methods=["POST"])
 def novousuario():
@@ -71,7 +69,6 @@ def relUsuario():
     return render_template("relusuario.html", usuarios = Usuario.query.all(), titulo="Usuários")
 
 if __name__ == 'app':
-    app.run(debug=True)
     db.create_all()
 
 
